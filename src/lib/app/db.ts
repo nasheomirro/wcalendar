@@ -1,12 +1,12 @@
 import { openDB, type IDBPDatabase, type DBSchema } from "idb";
-import type { DaySummary } from "./types";
+import type { Win } from "../types";
 
 const DB_NAME = "wcalendar-db";
 
 interface AppDBSchema extends DBSchema {
-  summaries: {
+  wins: {
     key: string;
-    value: DaySummary;
+    value: Win;
   };
 }
 
@@ -15,7 +15,7 @@ export type AppDB = IDBPDatabase<AppDBSchema>;
 export function openAppDB() {
   return openDB<AppDBSchema>(DB_NAME, 1, {
     upgrade(db) {
-      db.createObjectStore("summaries", { keyPath: "id" });
+      db.createObjectStore("wins", { keyPath: "id" });
     },
   });
 }

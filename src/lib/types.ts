@@ -1,11 +1,10 @@
-export type SummaryWin = {
-  readonly id: string;
+export type WinAttributes = {
   reason: string;
   stregth: 1 | 2 | 3;
-};
+}
 
-export type DaySummary = {
+export type Win = {
   readonly id: string;
   readonly date: Date;
-  wins: SummaryWin[];
+  attributes: WinAttributes;
 };
