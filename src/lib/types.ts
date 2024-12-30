@@ -1,11 +1,11 @@
-export type DaySummaryRecords = {
-  wins: string[];
-  mids: string[];
-  loses: string[];
+export type SummaryWin = {
+  readonly id: string;
+  reason: string;
+  stregth: 1 | 2 | 3;
 };
 
 export type DaySummary = {
   readonly id: string;
   readonly date: Date;
-  records: DaySummaryRecords;
+  wins: SummaryWin[];
 };

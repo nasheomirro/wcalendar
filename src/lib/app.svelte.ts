@@ -1,5 +1,5 @@
 import { SvelteMap } from "svelte/reactivity";
-import type { DaySummary, DaySummaryRecords } from "./types";
+import type { DaySummary, SummaryWin } from "./types";
 import { openAppDB, type AppDB } from "./db";
 import { nanoid } from "nanoid";
 
@@ -22,23 +22,19 @@ class App {
     const newSummary: DaySummary = {
       id: nanoid(),
       date: new Date(),
-      records: {
-        loses: [],
-        mids: [],
-        wins: [],
-      },
+      wins: [],
     };
 
     await this.#db.add("summaries", newSummary);
     this.#summaries.set(newSummary.id, newSummary);
   }
 
-  async setSummaryRecords(id: string, records: DaySummaryRecords) {
+  async setSummaryWins(id: string, wins: SummaryWin[]) {
     const oldSummary = this.#summaries.get(id);
     if (oldSummary) {
       const newSummary: DaySummary = {
         ...oldSummary,
-        records,
+        wins,
       };
 
       await this.#db.put("summaries", newSummary);
