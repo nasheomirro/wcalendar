@@ -16,10 +16,16 @@
     reason = "";
     stregth = 1;
   }
+
+  async function handleKeydown(e: KeyboardEvent) {
+    if (e.key === "Enter") {
+      submitWin();
+    }
+  }
 </script>
 
 <div>
-  <input class="text-black" bind:value={reason} />
+  <input class="text-black" bind:value={reason} onkeydown={handleKeydown} />
   {#each [1, 2, 3] as number}
     <input type="radio" value={number} bind:group={stregth} />
   {/each}
