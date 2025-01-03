@@ -5,7 +5,7 @@
     /** a date object to extract what exact month should be represented */
     date: Date;
     /** called when selected day changes */
-    ondatechange: (date: number) => void;
+    ondatechange?: (date: number) => void;
   };
 
   const { date, ondatechange }: Props = $props();
@@ -29,13 +29,13 @@
   {#each days as day}
     {#if day !== 0}
       <label class="aspect-square bg-main-100 rounded-md flex">
-        <span>{day}</span>
         <input
-          type="radio"
           value={day}
           bind:group={currentSelectedDay}
-          onchange={(e) => ondatechange(currentSelectedDay)}
+          onchange={(e) => ondatechange && ondatechange(currentSelectedDay)}
           name="calendar"
+          type="radio"
+          class="hidden"
         />
       </label>
     {:else}

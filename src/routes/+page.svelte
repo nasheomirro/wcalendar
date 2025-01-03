@@ -1,5 +1,5 @@
 <script lang="ts">
-  import WinCalendar from "$lib/calendar/WinCalendar.svelte";
+  import YearDisplay from "$lib/year/YearDisplay.svelte";
 </script>
 
-<WinCalendar />
+<YearDisplay />

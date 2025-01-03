@@ -3,7 +3,7 @@ class DateSelection {
   #currentDate = $state<Date>() as Date;
 
   constructor() {
-    this.#currentDate = new Date(); 
+    this.#currentDate = new Date; 
   }
 
   get currentDate() {
